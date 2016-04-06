@@ -1,0 +1,28 @@
+.left-menu {
+  padding: 1.0714em 0;
+  background-color: $gray;
+  text-align: center;
+  position: fixed;
+  top: 48px;
+  bottom: 0;
+  left: 0;
+  right: 80%;
+  overflow: auto;
+  &__categories {
+    margin-bottom: 30px;
+  }
+}
+
+.movie {
+  &__title {
+    color: $primary-color;
+    font-weight: 300;
+    @include font-size(14px);
+  }
+  &__info {
+    color: $gray-light;
+    display: inline-block;
+    @include font-size(12px);
+    margin-bottom: 20px;
+  }
+}

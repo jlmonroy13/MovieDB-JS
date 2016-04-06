@@ -1,0 +1,49 @@
+.header {
+  background-color: $black;
+  padding: 0 1.4285em;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.brand {
+  display: inline-block;
+  float: left;
+  &__title  {
+    display: inline-block;
+    color: $primary-color;
+    @include font-size(18px);
+    font-weight: 300;
+    vertical-align: middle;
+  }
+  &__subtitle {
+    color: $main-title-color;
+  }
+}
+.icon {
+  color: $primary-color;
+  vertical-align: middle;
+  @include font-size(18px);
+  cursor: pointer;
+  &--color {
+    color: $main-title-color;
+  }
+}
+.nav {
+  display: inline-block;
+  padding: 0;
+  &__items {
+    display: inline-block;
+  }
+}
+.user-info {
+  display: inline-block;
+  float: right;
+  vertical-align: middle;
+  &__title {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &__image {
+    vertical-align: middle;
+  }
+}

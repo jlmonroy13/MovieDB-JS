@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Koombea - MoviesDb</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <span class="icon icon-menu margin-right--medium"></span>
+      <h1 class="brand__title">Koombea <span class="brand__subtitle">Movies</span></h1>
+    </div>
+    <ul class="nav">
+      <li class="margin-right--medium  nav__items"><span class="icon icon-local-play icon--color"></span></li> 
+      <li class="margin-right--medium  nav__items"><span class="icon icon-clapperboard"></span></li>
+      <li class="margin-right--medium  nav__items"><span class="icon icon-play-circle"></span></li>
+      <li class="margin-right--medium  nav__items"><span class="icon icon-video"></span></li>
+    </ul>
+    <div class="user-info">
+      <p class="user-info__title margin-right">Emilia Clarke</p>
+      <img class="user-info__image" src="images/user-photo.png" alt="User-photo">
+    </div>
+  </header>
+  <div class="main">
+    <div class="left-menu">
+      <select name="select" class="left-menu__categories">
+        <option value="now_playing">Now playing</option>    
+        <option value="popular">Popular</option>    
+        <option value="top_rated">Top Rated</option>    
+        <option value="upcoming">Upcoming</option>    
+      </select>
+      <div class="movie">
+        <img class="movie__image" src="images/movie-image.jpg" alt="Movie Image"/>
+        <h1 class="movie__title">Movie Title</h1>
+        <span class="movie__info">2015</span>
+      </div>
+      <div class="movie">
+        <img class="movie__image" src="images/movie-image.jpg" alt="Movie Image"/>
+        <h1 class="movie__title">Movie Title</h1>
+        <span class="movie__info">2015</span>
+      </div>
+      <div class="movie">
+        <img class="movie__image" src="images/movie-image.jpg" alt="Movie Image"/>
+        <h1 class="movie__title">Movie Title</h1>
+        <span class="movie__info">2015</span>
+      </div>
+    </div>
+    <div class="movie-info">
+        <iframe class="movie-info__video" width="560" height="315" src="https://www.youtube.com/embed/sGbxmsDFVnE" frameborder="0" allowfullscreen></iframe>
+      <div class="movie-description">
+        <h1 class="movie-description__title">Movie Title</h1>
+        <p class="movie-description__legend">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div class="similar-movies">
+          <h2 class="similar-movies__title">Similar Movies</h2>
+          <div class="similar-movie">
+            <img src="" alt=""/>
+            <h3 class="similar-movie__title">Movie Title</h3>
+            <span class="similar-movie__title">2015</span>
+          </div>
+        </div>
+        <div class="similar-movies">
+          <h2 class="similar-movies__title">Similar Movies</h2>
+          <div class="similar-movie">
+            <img src="" alt=""/>
+            <h3 class="similar-movie__title">Movie Title</h3>
+            <span class="similar-movie__title">2015</span>
+          </div>
+        </div>
+        <div class="similar-movies">
+          <h2 class="similar-movies__title">Similar Movies</h2>
+          <div class="similar-movie">
+            <img src="" alt=""/>
+            <h3 class="similar-movie__title">Movie Title</h3>
+            <span class="similar-movie__title">2015</span>
+          </div>
+        </div>
+        <div class="similar-movies">
+          <h2 class="similar-movies__title">Similar Movies</h2>
+          <div class="similar-movie">
+            <img src="" alt=""/>
+            <h3 class="similar-movie__title">Movie Title</h3>
+            <span class="similar-movie__title">2015</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="javascript/vendor/bundle.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+{
+	"IcoMoonType": "selection",
+	"icons": [
+		{
+			"icon": {
+				"paths": [
+					"M961.067 305.024c-6.827-4.224-14.592-6.357-22.4-6.357-6.528 0-13.056 1.493-19.072 4.48l-108.928 54.485v-16.299c0-70.571-57.429-128-128-128h-469.333c-70.571 0-128 57.429-128 128v341.333c0 70.571 57.429 128 128 128h469.333c70.571 0 128-57.429 128-128v-16.299l108.928 54.443c6.016 3.029 12.544 4.523 19.072 4.523 7.808 0 15.573-2.133 22.4-6.357 12.587-7.808 20.267-21.504 20.267-36.309v-341.333c0-14.805-7.68-28.501-20.267-36.309zM298.667 576c-35.371 0-64-28.629-64-64s28.629-64 64-64 64 28.629 64 64-28.629 64-64 64z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"video"
+				],
+				"grid": 24
+			},
+			"attrs": [],
+			"properties": {
+				"order": 1,
+				"id": 0,
+				"prevSize": 24,
+				"code": 59651,
+				"name": "video"
+			},
+			"setIdx": 0,
+			"setId": 6,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
+					"M664 716l-46-174 140-116-180-10-66-168-66 168-182 10 142 116-46 174 152-98zM854 512q0 34 25 60t59 26v170q0 34-25 60t-59 26h-684q-34 0-59-26t-25-60v-170q36 0 60-25t24-61q0-34-25-60t-59-26v-170q0-34 25-60t59-26h684q34 0 59 26t25 60v170q-34 0-59 26t-25 60z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"local_play"
+				],
+				"grid": 24
+			},
+			"attrs": [],
+			"properties": {
+				"order": 1,
+				"id": 1,
+				"prevSize": 24,
+				"code": 59649,
+				"name": "local_play"
+			},
+			"setIdx": 3,
+			"setId": 3,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
+					"M1024 153.6v716.8c0 28.262-22.886 51.2-51.2 51.2h-921.6c-28.314 0-51.2-22.938-51.2-51.2v-716.8c0-28.314 22.886-51.2 51.2-51.2h51.2l153.6 153.6h128l-153.6-153.6h153.6l153.6 153.6h128l-153.6-153.6h153.6l153.6 153.6h128l-153.6-153.6h179.2c28.314 0 51.2 22.938 51.2 51.2z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"clapperboard"
+				],
+				"grid": 20
+			},
+			"attrs": [],
+			"properties": {
+				"order": 1,
+				"id": 0,
+				"prevSize": 20,
+				"code": 59648,
+				"name": "clapperboard"
+			},
+			"setIdx": 1,
+			"setId": 5,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
+					"M438.857 73.143q119.429 0 220.286 58.857t159.714 159.714 58.857 220.286-58.857 220.286-159.714 159.714-220.286 58.857-220.286-58.857-159.714-159.714-58.857-220.286 58.857-220.286 159.714-159.714 220.286-58.857zM658.286 543.429q18.286-10.286 18.286-31.429t-18.286-31.429l-310.857-182.857q-17.714-10.857-36.571-0.571-18.286 10.857-18.286 32v365.714q0 21.143 18.286 32 9.143 4.571 18.286 4.571 9.714 0 18.286-5.143z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"width": 878,
+				"tags": [
+					"play-circle"
+				],
+				"grid": 14
+			},
+			"attrs": [],
+			"properties": {
+				"order": 1,
+				"id": 2,
+				"prevSize": 28,
+				"code": 59650,
+				"name": "play-circle"
+			},
+			"setIdx": 4,
+			"setId": 2,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
+					"M896 384l-313.5-40.781-134.5-279.219-134.531 279.219-313.469 40.781 230.469 208.875-59.469 303.063 277-148.812 277.062 148.812-59.562-303.063 230.5-208.875z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"width": 896,
+				"tags": [
+					"star"
+				],
+				"grid": 16
+			},
+			"attrs": [],
+			"properties": {
+				"order": 15,
+				"id": 0,
+				"prevSize": 32,
+				"code": 59652,
+				"name": "star"
+			},
+			"setIdx": 5,
+			"setId": 1,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
+					"M64 192h896v192h-896zM64 448h896v192h-896zM64 704h896v192h-896z"
+				],
+				"attrs": [],
+				"isMulticolor": false,
+				"tags": [
+					"menu",
+					"list",
+					"options",
+					"lines",
+					"hamburger"
+				],
+				"grid": 16
+			},
+			"attrs": [],
+			"properties": {
+				"order": 16,
+				"prevSize": 32,
+				"ligatures": "menu, list3",
+				"name": "menu",
+				"id": 190,
+				"code": 59653
+			},
+			"setIdx": 6,
+			"setId": 0,
+			"iconIdx": 189
+		}
+	],
+	"height": 1024,
+	"metadata": {
+		"name": "movieDB"
+	},
+	"preferences": {
+		"showGlyphs": true,
+		"showQuickUse": true,
+		"showQuickUse2": true,
+		"showSVGs": true,
+		"fontPref": {
+			"prefix": "icon-",
+			"metadata": {
+				"fontFamily": "movieDB",
+				"majorVersion": 1,
+				"minorVersion": 0
+			},
+			"metrics": {
+				"emSize": 1024,
+				"baseline": 6.25,
+				"whitespace": 50
+			},
+			"embed": false
+		},
+		"imagePref": {
+			"prefix": "icon-",
+			"png": true,
+			"useClassSelector": true,
+			"color": 0,
+			"bgColor": 16777215,
+			"classSelector": ".icon"
+		},
+		"historySize": 100,
+		"showCodes": true,
+		"gridSize": 16,
+		"showGrid": false
+	}
+}

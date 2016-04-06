@@ -1,0 +1,22 @@
+.container{
+  max-width: 1240px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.container--small{
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 15px;
+}
+
+body {
+  font-family: 'Helvetica Neue';
+  font-weight: 300;
+  font-size: 14px;
+}
+
+p {
+  color: $primary-color;
+}

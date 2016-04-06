@@ -1,0 +1,28 @@
+{
+  "name": "Address-Book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlmonroy13/Address-Book.git"
+  },
+  "author": "Jorge Monroy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlmonroy13/Address-Book/issues"
+  },
+  "homepage": "https://github.com/jlmonroy13/Address-Book#readme",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt-browser-sync": "^2.2.0",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
