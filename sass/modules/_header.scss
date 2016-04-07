@@ -4,6 +4,9 @@
   text-align: center;
   position: relative;
   z-index: 1;
+  @media ( max-width: 544px) {
+    text-align: right;
+  }
 }
 .brand {
   display: inline-block;
@@ -45,5 +48,8 @@
   }
   &__image {
     vertical-align: middle;
+  }
+  @media ( max-width: 544px) {
+    display: none;
   }
 }

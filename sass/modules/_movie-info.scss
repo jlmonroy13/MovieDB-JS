@@ -9,6 +9,13 @@
   padding: 2.1428em; 
   &__video {
     margin-bottom: 30px;
+    width: 60%;
+    height: 26vw;
+    min-width: 320px;
+    min-height: 210px;
+  }
+  @media ( max-width: 870px) {
+    left: 0;
   }
 }
 .movie-description {
@@ -17,6 +24,7 @@
   border-radius: $border-radius;
   padding: 2.1428em;
   text-align: left;
+  position: relative;
   &__title {
     color: $main-title-color;
     font-weight: 300;
@@ -29,3 +37,41 @@
     line-height: 1.6;
   }
 }
+
+.similar-movies {
+  &__title {
+    color: $main-title-color;
+    font-weight: 300;
+    @include font-size(16px); 
+  }
+}
+
+.similar-movie {
+  display: inline-block;
+  margin-bottom: 30px;
+  &__image {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  &__container {
+    display: inline-block;
+  }
+  &__title {
+    color: $primary-color;
+    font-weight: 300;
+    @include font-size(14px); 
+    margin: 0 0 5px;
+  }
+  &__info {
+    color: $gray-light;
+    font-weight: 300;
+    @include font-size(12px); 
+  }
+}
+
+
+
+
+
+
+

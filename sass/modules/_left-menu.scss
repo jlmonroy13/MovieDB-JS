@@ -8,8 +8,26 @@
   left: 0;
   right: 80%;
   overflow: auto;
+  @media ( max-width: 870px) {
+    display: none;
+  }
   &__categories {
     margin-bottom: 30px;
+    background-color: $gray-dark;
+    color: $primary-color;
+    width: 130px;
+    @include font-size(13px);
+  }
+  &--display {
+    @media ( max-width: 870px) {
+      display: block;
+      position: fixed;
+      transition: 0.5s;
+      width: 175px;
+      top: 47px;
+      bottom: 0;
+      z-index: 2;
+    }  
   }
 }
 
