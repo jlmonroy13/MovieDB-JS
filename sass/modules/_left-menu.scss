@@ -1,13 +1,21 @@
 .left-menu {
-  padding: 1.0714em 0;
+  padding: 1.0714em 0.3571em;
   background-color: $gray;
   text-align: center;
   position: fixed;
   top: 48px;
   bottom: 0;
   left: 0;
-  right: 80%;
+  right: 85%;
   overflow: auto;
+  &::-webkit-scrollbar { 
+    width: 8px; 
+    background-color: $gray; 
+  }
+  &::-webkit-scrollbar-thumb { 
+    border-radius: $border-radius-small;
+    background-color: $secundary-color; 
+  }
   @media ( max-width: 870px) {
     display: none;
   }
@@ -32,15 +40,22 @@
 }
 
 .movie {
+  &__image {
+    max-width: 100px;
+    cursor: pointer;
+  }
   &__title {
     color: $primary-color;
     font-weight: 300;
     @include font-size(14px);
+    max-width: 160px;
+    margin: 0.67em auto;
   }
   &__info {
     color: $gray-light;
     display: inline-block;
     @include font-size(12px);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 }
+.left-menu::-webkit-scrollbar{ width: 8px; background-color: $gray; } 

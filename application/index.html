@@ -31,79 +31,46 @@
         <option value="top_rated">Top Rated</option>    
         <option value="upcoming">Upcoming</option>    
       </select>
-      <div class="movie">
-        <img class="movie__image" src="images/movie-image.jpg" alt="Movie Image"/>
-        <h1 class="movie__title">Movie Title</h1>
-        <span class="movie__info">2015</span>
+      <div class="js-movie-container">
+        
       </div>
-      <div class="movie">
-        <img class="movie__image" src="images/movie-image.jpg" alt="Movie Image"/>
-        <h1 class="movie__title">Movie Title</h1>
-        <span class="movie__info">2015</span>
-      </div>
-      <div class="movie">
-        <img class="movie__image" src="images/movie-image.jpg" alt="Movie Image"/>
-        <h1 class="movie__title">Movie Title</h1>
-        <span class="movie__info">2015</span>
-      </div>
-    </div>
-    <div class="movie-info">
-        <iframe class="movie-info__video" src="https://www.youtube.com/embed/sGbxmsDFVnE" frameborder="0" allowfullscreen></iframe>
-      <div class="movie-description">
-        <a href="#" class="button-add button-add--position"><span class="icon icon-star icon-star--position"></span> ADD TO FAVORITES</a>
-        <h1 class="movie-description__title">Movie Title</h1>
-        <p class="movie-description__legend">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <div class="similar-movies">
-          <h2 class="similar-movies__title">Similar Movies</h2>
-          <div class="similar-movie margin-right--large">
-            <img class="similar-movie__image margin-right" src="images/movie-image-small.jpg" alt=""/>
-            <div class="similar-movie__container">
-              <h3 class="similar-movie__title">Movie Title</h3>
-              <span class="similar-movie__info">2015</span>
-            </div>  
-          </div>
-          <div class="similar-movie margin-right--large">
-            <img class="similar-movie__image margin-right" src="images/movie-image-small.jpg" alt=""/>
-            <div class="similar-movie__container">
-              <h3 class="similar-movie__title">Movie Title</h3>
-              <span class="similar-movie__info">2015</span>
-            </div>  
-          </div>
-          <div class="similar-movie margin-right--large">
-            <img class="similar-movie__image margin-right" src="images/movie-image-small.jpg" alt=""/>
-            <div class="similar-movie__container">
-              <h3 class="similar-movie__title">Movie Title</h3>
-              <span class="similar-movie__info">2015</span>
-            </div>  
-          </div>
-          <div class="similar-movie margin-right--large">
-            <img class="similar-movie__image margin-right" src="images/movie-image-small.jpg" alt=""/>
-            <div class="similar-movie__container">
-              <h3 class="similar-movie__title">Movie Title</h3>
-              <span class="similar-movie__info">2015</span>
-            </div>  
-          </div>
-          <div class="similar-movie margin-right--large">
-            <img class="similar-movie__image margin-right" src="images/movie-image-small.jpg" alt=""/>
-            <div class="similar-movie__container">
-              <h3 class="similar-movie__title">Movie Title</h3>
-              <span class="similar-movie__info">2015</span>
-            </div>  
-          </div>
-          <div class="similar-movie margin-right--large">
-            <img class="similar-movie__image margin-right" src="images/movie-image-small.jpg" alt=""/>
-            <div class="similar-movie__container">
-              <h3 class="similar-movie__title">Movie Title</h3>
-              <span class="similar-movie__info">2015</span>
-            </div>  
-          </div>
-
-        </div>
-      </div>
+    </div>  
+    <div class="js-movie-info movie-info">
+      
     </div>
   </div>
 
   <script src="javascript/vendor/bundle.js"></script>
+  <script id="movie-left-template" type="text/template">
+    {{#results}}
+      <div class="movie">
+        <img class="movie__image" src="http://image.tmdb.org/t/p/w500{{poster_path}}" alt="Movie Image"/>
+        <h1 class="movie__title">{{title}}</h1>
+        <span class="movie__info">{{release_date}}</span>
+      </div>
+    {{/results}}    
+  </script>
+  <script id="movie-info-template" type="text/template">
+
+    <iframe class="movie-info__video" src="https://www.youtube.com/embed/{{trailer}}" frameborder="0" allowfullscreen></iframe>
+    <div class="movie-description">
+      <a href="#" class="button-add button-add--position"><span class="icon icon-star icon-star--position"></span> ADD TO FAVORITES</a>
+      <h1 class="movie-description__title">{{title}}</h1>
+      <p class="movie-description__legend">{{overview}}</p>
+      <div class="similar-movies">
+        <h2 class="similar-movies__title">Similar Movies</h2>
+        {{#similars}}
+          <div class="similar-movie margin-right--large">
+            <img class="similar-movie__image margin-right" src="http://image.tmdb.org/t/p/w500{{poster_path}}" alt=""/>
+            <div class="similar-movie__container">
+              <h3 class="similar-movie__title">{{title}}</h3>
+              <span class="similar-movie__info">{{release_date}}</span>
+            </div>  
+          </div>
+        {{/similars}}
+      </div>
+    </div>
+  </script>
   <script src="javascript/api-moviedb.js"></script>
   <script src="javascript/application.js"></script>
 </body>

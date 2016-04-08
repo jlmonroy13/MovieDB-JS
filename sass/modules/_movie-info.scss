@@ -2,14 +2,22 @@
   position: fixed;
   top: 48px;
   bottom: 0;
-  left: 20%;
+  left: 15%;
   right: 0;
   text-align: center;
   overflow: auto;
   padding: 2.1428em; 
+  &::-webkit-scrollbar { 
+    width: 8px; 
+    background-color: $gray; 
+  }
+  &::-webkit-scrollbar-thumb { 
+    border-radius: $border-radius-small;
+    background-color: $secundary-color; 
+  }
   &__video {
     margin-bottom: 30px;
-    width: 60%;
+    width: 50%;
     height: 26vw;
     min-width: 320px;
     min-height: 210px;
@@ -49,18 +57,25 @@
 .similar-movie {
   display: inline-block;
   margin-bottom: 30px;
+  width: 240px;
+  @media ( max-width: 480px) {
+    width: 210px;
+  }
   &__image {
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: top;
+    max-width: 75px;
   }
   &__container {
     display: inline-block;
+    vertical-align: top;
   }
   &__title {
     color: $primary-color;
     font-weight: 300;
     @include font-size(14px); 
     margin: 0 0 5px;
+    max-width: 120px;
   }
   &__info {
     color: $gray-light;

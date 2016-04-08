@@ -1041,7 +1041,7 @@ p {
     position: absolute;
     top: 20px;
     right: 30px; }
-    @media (max-width: 585px) {
+    @media (max-width: 750px) {
       .button-add--position {
         position: relative;
         top: 0;
@@ -1069,15 +1069,21 @@ p {
   background-size: cover; }
 
 .left-menu {
-  padding: 1.0714em 0;
+  padding: 1.0714em 0.3571em;
   background-color: rgba(38, 38, 38, 0.73);
   text-align: center;
   position: fixed;
   top: 48px;
   bottom: 0;
   left: 0;
-  right: 80%;
+  right: 85%;
   overflow: auto; }
+  .left-menu::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(38, 38, 38, 0.73); }
+  .left-menu::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: #000; }
   @media (max-width: 870px) {
     .left-menu {
       display: none; } }
@@ -1097,28 +1103,43 @@ p {
       bottom: 0;
       z-index: 2; } }
 
+.movie__image {
+  max-width: 100px;
+  cursor: pointer; }
 .movie__title {
   color: #fff;
   font-weight: 300;
-  font-size: 1rem; }
+  font-size: 1rem;
+  max-width: 160px;
+  margin: 0.67em auto; }
 .movie__info {
   color: #7B7B7B;
   display: inline-block;
   font-size: 0.85714rem;
-  margin-bottom: 20px; }
+  margin-bottom: 40px; }
+
+.left-menu::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(38, 38, 38, 0.73); }
 
 .movie-info {
   position: fixed;
   top: 48px;
   bottom: 0;
-  left: 20%;
+  left: 15%;
   right: 0;
   text-align: center;
   overflow: auto;
   padding: 2.1428em; }
+  .movie-info::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(38, 38, 38, 0.73); }
+  .movie-info::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: #000; }
   .movie-info__video {
     margin-bottom: 30px;
-    width: 60%;
+    width: 50%;
     height: 26vw;
     min-width: 320px;
     min-height: 210px; }
@@ -1150,17 +1171,24 @@ p {
 
 .similar-movie {
   display: inline-block;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  width: 240px; }
+  @media (max-width: 480px) {
+    .similar-movie {
+      width: 210px; } }
   .similar-movie__image {
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: top;
+    max-width: 75px; }
   .similar-movie__container {
-    display: inline-block; }
+    display: inline-block;
+    vertical-align: top; }
   .similar-movie__title {
     color: #fff;
     font-weight: 300;
     font-size: 1rem;
-    margin: 0 0 5px; }
+    margin: 0 0 5px;
+    max-width: 120px; }
   .similar-movie__info {
     color: #7B7B7B;
     font-weight: 300;
