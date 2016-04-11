@@ -3,7 +3,6 @@ function getMovies(completeurl, api_key) {
   var url_moreInfo        =     'http://api.themoviedb.org/3/movie/',
       template_movieleft  =     Handlebars.compile($('#movie-left-template').html()),
       template_movieinfo  =     Handlebars.compile($('#movie-info-template').html());
-
   $.get(completeurl).then(function(movies) {
     favoriteSelector(movies);
     //Get info of the first movie and render into Movie Info Section
@@ -16,7 +15,6 @@ function getMovies(completeurl, api_key) {
       data.$leftMovie = $(template_movieleft(data));
       data.favorite = false;
       $('.js-movie-container').append(data.$leftMovie);
-
       //Display movie info when you click a movie on the left menu
       (function getTrailerAndSimilars() {
         data.$leftMovie.click(function() {
@@ -33,7 +31,6 @@ function getMovies(completeurl, api_key) {
             $('.main').css('background', 'url("http://image.tmdb.org/t/p/w1920'+data.backdrop_path+'") no-repeat');
             //Insert trailer, overview and similars movies into infomovie section
             data.$infoMovie = $(template_movieinfo(data));
-
             //Add to favorite
             (function addFavorite() {
               var $btn_favorite = data.$infoMovie.find('.js-btn-add');
@@ -45,27 +42,14 @@ function getMovies(completeurl, api_key) {
           });
         });
       })();//END getTrailerAndSimilars function
-    });
+    });//END Each function
   });
 }
-
 function favoriteSelector(movies) {
   $('.js-categories').change(function(){
-    var selectedOption = $('.js-categories option:selected');
-    if(selectedOption.val() == 'favorites') {
-      $.each(movies.results, function(i, data) {
-        if(data.favorite) {
-          // $('.js-movie-container').append(data.$leftMovie);
-          data.$leftMovie.show();
-        }
-        else {
-          data.$leftMovie.hide();
-        }
-      });
-    }
+    hideAndShowElements(movies);
   });  
 }
-
 function renderMovieInfo(index, api_key, data) {
   var url_moreInfo        =     'http://api.themoviedb.org/3/movie/',
       template_movieinfo  =     Handlebars.compile($('#movie-info-template').html());
@@ -93,7 +77,6 @@ function renderMovieInfo(index, api_key, data) {
     $('.js-movie-info').html(data.results[index].$infoMovie);
   });
 }
-
 function hideAndShowElements(movies) {
   var selectedOption = $('.js-categories option:selected');
   if (selectedOption.val() == 'favorites') {
@@ -107,19 +90,16 @@ function hideAndShowElements(movies) {
     });
   }
 } 
-
 function changeFavoriteButton(button, data, movies) {
   if(data.favorite) {
-    data.favorite = false;
-    $(button).toggleClass('button-add--color');
+    data.favorite = false; 
     $(button).html('<span class="icon icon-star icon-star--position"></span> ADD TO FAVORITES');
-    hideAndShowElements(movies);
   }else {
     data.favorite = true;
-    $(button).toggleClass('button-add--color');
     $(button).html('<span class="icon icon-star icon-star--position"></span> REMOVE FROM FAVORITES');
-    hideAndShowElements(movies);
   }
+  $(button).toggleClass('button-add--color');
+  hideAndShowElements(movies);
 }
 
 
