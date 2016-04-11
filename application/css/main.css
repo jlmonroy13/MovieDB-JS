@@ -942,7 +942,7 @@ body {
   font-size: 14px; }
 
 p {
-  color: #fff; }
+  color: white; }
 
 @font-face {
   font-family: 'movieDB';
@@ -982,7 +982,7 @@ p {
   content: "\e905"; }
 
 .header {
-  background-color: #000;
+  background-color: black;
   padding: 0 1.4285em;
   text-align: center;
   position: relative;
@@ -996,7 +996,7 @@ p {
   float: left; }
   .brand__title {
     display: inline-block;
-    color: #fff;
+    color: white;
     font-size: 1.28571rem;
     font-weight: 300;
     vertical-align: middle; }
@@ -1004,7 +1004,7 @@ p {
     color: #58A5FF; }
 
 .icon {
-  color: #fff;
+  color: white;
   vertical-align: middle;
   font-size: 1.28571rem;
   cursor: pointer; }
@@ -1031,12 +1031,13 @@ p {
       display: none; } }
 
 .button-add {
-  color: #fff;
+  color: white;
   font-size: 0.92857rem;
   background-color: #4A90E2;
   padding: 0.5714em 2em;
   border-radius: 6px;
-  vertical-align: middle; }
+  vertical-align: middle;
+  transition: 0.5s; }
   .button-add--position {
     position: absolute;
     top: 20px;
@@ -1048,9 +1049,8 @@ p {
         right: 0;
         display: inline-block;
         margin-bottom: 20px; } }
-  .button-add:hover {
-    transition: 0.5s;
-    background-color: #58A5FF; }
+  .button-add--color {
+    background-color: #FFCC00; }
 
 .icon-star--position {
   position: relative;
@@ -1083,14 +1083,14 @@ p {
     background-color: rgba(38, 38, 38, 0.73); }
   .left-menu::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background-color: #000; }
+    background-color: black; }
   @media (max-width: 870px) {
     .left-menu {
       display: none; } }
   .left-menu__categories {
     margin-bottom: 30px;
     background-color: rgba(16, 16, 16, 0.76);
-    color: #fff;
+    color: white;
     width: 130px;
     font-size: 0.92857rem; }
   @media (max-width: 870px) {
@@ -1107,7 +1107,7 @@ p {
   max-width: 100px;
   cursor: pointer; }
 .movie__title {
-  color: #fff;
+  color: white;
   font-weight: 300;
   font-size: 1rem;
   max-width: 160px;
@@ -1136,7 +1136,7 @@ p {
     background-color: rgba(38, 38, 38, 0.73); }
   .movie-info::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background-color: #000; }
+    background-color: black; }
   .movie-info__video {
     margin-bottom: 30px;
     width: 50%;
@@ -1184,7 +1184,7 @@ p {
     display: inline-block;
     vertical-align: top; }
   .similar-movie__title {
-    color: #fff;
+    color: white;
     font-weight: 300;
     font-size: 1rem;
     margin: 0 0 5px;

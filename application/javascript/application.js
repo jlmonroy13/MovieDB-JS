@@ -16,7 +16,6 @@ $(function() {
   });
   
   getMovies(completeurl, api_key);
-
   //GET MOVIES
   $categories.change(function(){
     var selectedOption = $('.js-categories option:selected');

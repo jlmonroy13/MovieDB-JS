@@ -5,6 +5,7 @@
   padding: 0.5714em 2em;
   border-radius: $border-radius-small;
   vertical-align: middle;
+  transition: 0.5s;
   &--position {
     position: absolute;
     top: 20px;
@@ -17,9 +18,8 @@
       margin-bottom: 20px;
     }
   }
-  &:hover {
-    transition: 0.5s;
-    background-color: $main-title-color;
+  &--color {
+    background-color: $favorite-color;
   }
 }
 

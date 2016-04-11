@@ -30,7 +30,7 @@
         <option value="popular">Popular</option>    
         <option value="top_rated">Top Rated</option>    
         <option value="upcoming">Upcoming</option>
-        <option value="upcoming">Favorites</option>    
+        <option value="favorites">Favorites</option>    
       </select>
       <div class="js-movie-container">
         
@@ -55,7 +55,11 @@
     <div class="js-movie-info">
       <iframe class="movie-info__video" src="https://www.youtube.com/embed/{{trailer}}" frameborder="0" allowfullscreen></iframe>
       <div class="movie-description">
-        <a href="#" class="js-btn-add button-add button-add--position"><span class="icon icon-star icon-star--position"></span> ADD TO FAVORITES</a>
+        {{#if favorite}}
+          <a href="#" class="js-btn-add button-add button-add--color button-add--position"><span class="icon icon-star icon-star--position"></span> REMOVE FROM FAVORITES</a>
+        {{else}}
+          <a href="#" class="js-btn-add button-add button-add--position"><span class="icon icon-star icon-star--position"></span> ADD TO FAVORITES</a>
+        {{/if}}
         <h1 class="movie-description__title">{{title}}</h1>
         <p class="movie-description__legend">{{overview}}</p>
         <div class="similar-movies">
