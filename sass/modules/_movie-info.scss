@@ -6,7 +6,10 @@
   right: 0;
   text-align: center;
   overflow: auto;
-  padding: 2.1428em; 
+  padding: 2.1428em;
+  @media ( max-width: 400px) {
+    padding: 2.1428em 0.7142em !important;
+  } 
   &::-webkit-scrollbar { 
     width: 8px; 
     background-color: $gray; 

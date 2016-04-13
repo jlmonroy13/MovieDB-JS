@@ -4,4 +4,9 @@
   width: 100%;
   background: url('../images/movie-cover.jpg') no-repeat;
   background-size: cover;
+  &__over {
+    width: 100%;
+    height: 100%;
+    background-color: $gray-over;
+  }
 }

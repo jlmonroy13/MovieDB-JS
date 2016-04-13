@@ -36,6 +36,9 @@
   padding: 0;
   &__items {
     display: inline-block;
+    @media ( max-width: 400px) {
+      margin-right: 5px !important;
+    }
   }
 }
 .user-info {
