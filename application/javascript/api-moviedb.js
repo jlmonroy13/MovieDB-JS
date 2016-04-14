@@ -1,44 +1,57 @@
 $(function(){
   var api_key                  =     'c0b2e256491361d28c75bbe8f9e59a85',
-      now_playing              =     'https://api.themoviedb.org/3/movie/now_playing?api_key=',
-      completeurl              =     now_playing+api_key,
-      $leftMenu                =     $('.js-left-menu'),
+      $buttonMenu              =     $('.js-btn-menu'),
+      $menu                    =     $('.js-left-menu'),
+      $leftMenu                =     $('.js-movie-container'),
       $infoMovie               =     $('.js-movie-info'),
-      $main                    =     $('.main'), 
+      $categories              =     $('.js-categories'),
+      $main                    =     $('.main'),
+      $favoriteSelector        =     $('.js-favorite-selector'), 
       templateMovieleftSrc     =     $('#movie-left-template').html(),
       templateMovieLeft        =     Handlebars.compile(templateMovieleftSrc),
       templateMovieInfoSrc     =     $('#movie-info-template').html(),
       templateMovieInfo        =     Handlebars.compile(templateMovieInfoSrc),
       url_moreInfo             =     'http://api.themoviedb.org/3/movie/',
       classFavoriteBtn         =     '.js-btn-add',
-      $favoriteButton,
-      similarsMovies,
-      movieTrailer;
- 
+      now_playing              =     'https://api.themoviedb.org/3/movie/now_playing?api_key=',
+      popular                  =     'https://api.themoviedb.org/3/movie/popular?api_key=',
+      top_rated                =     'https://api.themoviedb.org/3/movie/top_rated?api_key=',
+      upcoming                 =     'https://api.themoviedb.org/3/movie/upcoming?api_key=',
+      completeurl              =     now_playing+api_key,
+      $favoriteButton, similarsMovies, movieTrailer;
+
   function getMoviesList(url) {
     return new Promise(function(resolve, reject) {
-      resolve($.get(completeurl));
+      resolve($.get(url));
       reject('There was a problem with the API');
     });
   }
 
-  getMoviesList().then(showAllMovies);
-
   function showAllMovies(data) {
+    $leftMenu.empty();
+    $favoriteSelector.hide(); 
+    $categories.change(function(){
+      hideAndShowElements(data);
+    });
     getSimilarsMoviesAndTrialer(data.results[0].id).then(function(movieinfo) {
       $main.css('background', 'url("http://image.tmdb.org/t/p/w1920'+data.results[0].backdrop_path+'") no-repeat');
       data.results[0].similarsMovies = movieinfo.similarsMovies;
       data.results[0].trailer = movieinfo. movieTrailer;
       data.results[0].$infoMovieView = $(templateMovieInfo(data.results[0]));
+      $favoriteButton = data.results[0].$infoMovieView.find(classFavoriteBtn);
+      $favoriteButton.click(function(){
+        addRemoveFavorites(data.results[0], this);
+        $favoriteSelector.show(); 
+      });
       $infoMovie.html(data.results[0].$infoMovieView);
     });
     $.each(data.results, function(i, movie) {
-      extendMovieObject(movie);
+      extendMovieObject(movie, data);
     });
     console.log(data);
   }
 
-  function extendMovieObject(movie) {
+  function extendMovieObject(movie, movies) {
     movie.assignLeftMovieView = function() {
       movie.$leftMovieView = $(templateMovieLeft(movie));
     };
@@ -59,13 +72,13 @@ $(function(){
           movie.assignInfoMovieView();
           $favoriteButton = movie.$infoMovieView.find(classFavoriteBtn);
           $favoriteButton.click(function(){
-            alert("hola");
+            addRemoveFavorites(movie, this, movies);
+            $favoriteSelector.show(); 
           });
           showMovieInfo(movie);
         });
       });
     }
-
     movie.assignLeftMovieView();
     movie.assignFavorite();
     movie.$leftMovieView.appendTo($leftMenu);
@@ -76,6 +89,7 @@ $(function(){
     return $.get(url_moreInfo+id+'/videos?api_key='+api_key).then(function(dataTrailer) {
       if(dataTrailer.results == 0) {
         alert("No trailer found");
+        movieTrailer = ''; 
       }else {
         movieTrailer = dataTrailer.results[0]; 
       }
@@ -93,146 +107,65 @@ $(function(){
     $main.css('background', 'url("http://image.tmdb.org/t/p/w1920'+movie.backdrop_path+'") no-repeat');
     $infoMovie.html(movie.$infoMovieView);
   }
+
+  function addRemoveFavorites(movie, button, movies) {
+    if(movie.favorite) {
+      movie.favorite = false;
+      $(button).html('<span class="icon icon-star icon-star--position"></span> ADD TO FAVORITES');
+    }else {
+      movie.favorite = true;
+      $(button).html('<span class="icon icon-star icon-star--position"></span> REMOVE FROM FAVORITES');
+    }
+    $(button).toggleClass('button-add--color');
+    hideAndShowElements(movies);
+  }
+
+  function hideAndShowElements(movies) {
+    var $selectedOption = $('.js-categories option:selected');
+    if ($selectedOption.val() == 'favorites') {
+      $.each(movies.results, function(i, data) {
+        if(data.favorite) {
+          data.$leftMovieView.show();
+        }
+        else {
+          data.$leftMovieView.hide();
+        }
+      });
+    }
+  }
+
+  //To open the left Menu
+  $buttonMenu.click(function() {
+    $menu.toggleClass('left-menu--display');
+  });
+
+  //GET MOVIES AT THE FIRST TIME
+  getMoviesList(completeurl).then(showAllMovies).catch(function(err) {
+    alert(err);
+  });
+
+  //GET MOVIES DEPENDING URL 
+  $categories.change(function(){
+    var $selectedOption = $('.js-categories option:selected');
+    /*NOW PLAYING SELECTION---------------------------------------------------------------------*/  
+    if( $selectedOption.val() == 'now_playing') {
+      completeurl = now_playing+api_key;
+      getMoviesList(completeurl).then(showAllMovies);
+    /*POPULAR SELECTION---------------------------------------------------------------------*/  
+    }else if($selectedOption.val() == 'popular') {
+      completeurl = popular+api_key;
+      getMoviesList(completeurl).then(showAllMovies);
+    /*UPCOMING SELECTION---------------------------------------------------------------------*/     
+    }else if($selectedOption.val() == 'upcoming') {
+      completeurl = upcoming+api_key;
+      getMoviesList(completeurl).then(showAllMovies);
+    /*TOP RELATED SELECTION---------------------------------------------------------------------*/      
+    }else if($selectedOption.val() == 'top_rated') {
+      completeurl = top_rated+api_key;
+      getMoviesList(completeurl).then(showAllMovies);
+    }
+  });
 }); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//////////////////////////////////////////////////////
-
-// function getMovies(completeurl, api_key) {
-//   var url_moreInfo        =     'http://api.themoviedb.org/3/movie/',
-//       template_movieleft  =     Handlebars.compile($('#movie-left-template').html()),
-//       template_movieinfo  =     Handlebars.compile($('#movie-info-template').html());
-//   $.get(completeurl).then(function(movies) {
-//     favoriteSelector(movies);
-//     //Get info of the first movie and render into Movie Info Section
-//     renderMovieInfo(0, api_key, movies);
-//     //Empty Left Menu
-//     $('.js-movie-container').empty();
-//     //add trailer, similars movies and functions to each object
-//     $.each(movies.results, function(i, data) {
-//       //Add node into the Object
-//       data.$leftMovie = $(template_movieleft(data));
-//       data.favorite = false;
-//       $('.js-movie-container').append(data.$leftMovie);
-//       //Display movie info when you click a movie on the left menu
-//       (function getTrailerAndSimilars() {
-//         data.$leftMovie.click(function() {
-//           $.get(url_moreInfo+data.id+'/videos?api_key='+api_key).then(function(videos){
-//             if(videos.results == 0) {
-//               alert("No trailer found");
-//             }else {
-//               data.trailer = videos.results[0].key;
-//             }
-//             return $.get(url_moreInfo+data.id+'/similar?api_key='+api_key);
-//           }).then(function(similars){
-//             data.similars = similars.results;
-//             //Change the main background image
-//             $('.main').css('background', 'url("http://image.tmdb.org/t/p/w1920'+data.backdrop_path+'") no-repeat');
-//             //Insert trailer, overview and similars movies into infomovie section
-//             data.$infoMovie = $(template_movieinfo(data));
-//             //Add to favorite
-//             (function addFavorite() {
-//               var $btn_favorite = data.$infoMovie.find('.js-btn-add');
-//               $btn_favorite.click(function(){
-//                 changeFavoriteButton(this, data, movies);
-//               });
-//             })();//END addFavorite function
-//             $('.js-movie-info').html(data.$infoMovie);
-//           });
-//         });
-//       })();//END getTrailerAndSimilars function
-//     });//END Each function
-//   });
-// }
-// function favoriteSelector(movies) {
-//   $('.js-categories').change(function(){
-//     hideAndShowElements(movies);
-//   });  
-// }
-// function renderMovieInfo(index, api_key, data) {
-//   var url_moreInfo        =     'http://api.themoviedb.org/3/movie/',
-//       template_movieinfo  =     Handlebars.compile($('#movie-info-template').html());
-//   //Get info of the first movie on the left menu
-//   $.get(url_moreInfo+data.results[index].id+'/videos?api_key='+api_key).then(function(videos){
-//     if(videos.results == 0) {
-//       alert("No trailer found")
-//     }else {
-//       data.results[index].trailer = videos.results[index].key;
-//     }
-//     return $.get(url_moreInfo+data.results[index].id+'/similar?api_key='+api_key);
-//   }).then(function(similars){
-//     data.results[index].similars = similars.results;
-//     //Change the main background image
-//     $('.main').css('background', 'url("http://image.tmdb.org/t/p/w1920'+data.results[index].backdrop_path+'") no-repeat');
-//     data.results[index].$infoMovie = $(template_movieinfo(data.results[index]));
-//     //Add to favorite
-//     (function addFavorite() {
-//       var $btn_favorite = data.results[index].$infoMovie.find('.js-btn-add');
-//       $btn_favorite.click(function(){
-//         changeFavoriteButton(this, data.results[index], data.results);
-//       });
-//     })();//END addFavorite function
-//     //Insert trailer, overview and similars movies into info movie section
-//     $('.js-movie-info').html(data.results[index].$infoMovie);
-//   });
-// }
-// function hideAndShowElements(movies) {
-//   var selectedOption = $('.js-categories option:selected');
-//   if (selectedOption.val() == 'favorites') {
-//     $.each(movies.results, function(i, data) {
-//       if(data.favorite) {
-//         data.$leftMovie.show();
-//       }
-//       else {
-//         data.$leftMovie.hide();
-//       }
-//     });
-//   }
-// } 
-// function changeFavoriteButton(button, data, movies) {
-//   if(data.favorite) {
-//     data.favorite = false; 
-//     $(button).html('<span class="icon icon-star icon-star--position"></span> ADD TO FAVORITES');
-//   }else {
-//     data.favorite = true;
-//     $(button).html('<span class="icon icon-star icon-star--position"></span> REMOVE FROM FAVORITES');
-//   }
-//   $(button).toggleClass('button-add--color');
-//   hideAndShowElements(movies);
-// }
 
 
 

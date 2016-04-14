@@ -1,4 +1,42 @@
+// $(function() {
+//   var $categories         =     $('.js-categories'),
+//       $button_menu        =     $('.js-btn-menu'),
+//       api_key             =     'c0b2e256491361d28c75bbe8f9e59a85',
+//       now_playing         =     'https://api.themoviedb.org/3/movie/now_playing?api_key=',
+//       popular             =     'https://api.themoviedb.org/3/movie/popular?api_key=',
+//       top_rated           =     'https://api.themoviedb.org/3/movie/top_rated?api_key=',
+//       upcoming            =     'https://api.themoviedb.org/3/movie/upcoming?api_key=',
+//       completeurl         =     now_playing+api_key;
 
+//   //To open the left Menu
+//   $button_menu.click(function() {
+//     $left_menu.toggleClass('left-menu--display');
+//   });
+
+//   getMoviesList(completeurl).then(showAllMovies);
+
+//   //GET MOVIES
+//   $categories.change(function(){
+//     var $selectedOption = $('.js-categories option:selected');
+//     NOW PLAYING SELECTION---------------------------------------------------------------------  
+//     if( $selectedOption.val() == 'now_playing') {
+//       completeurl = now_playing+api_key;
+//       getMoviesList(completeurl).then(showAllMovies);
+//     /*POPULAR SELECTION---------------------------------------------------------------------*/  
+//     }else if($selectedOption.val() == 'popular') {
+//       completeurl = popular+api_key;
+//       getMoviesList(completeurl).then(showAllMovies);
+//     /*UPCOMING SELECTION---------------------------------------------------------------------*/     
+//     }else if($selectedOption.val() == 'upcoming') {
+//       completeurl = upcoming+api_key;
+//       getMoviesList(completeurl).then(showAllMovies);
+//     /*TOP RELATED SELECTION---------------------------------------------------------------------*/      
+//     }else if($selectedOption.val() == 'top_rated') {
+//       completeurl = top_rated+api_key;
+//       getMoviesList(completeurl).then(showAllMovies);
+//     }
+//   });
+// });//End Document Ready
 
 
 
