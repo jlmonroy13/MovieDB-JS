@@ -2,9 +2,18 @@ $(function(){
   var api_key                  =     'c0b2e256491361d28c75bbe8f9e59a85',
       now_playing              =     'https://api.themoviedb.org/3/movie/now_playing?api_key=',
       completeurl              =     now_playing+api_key,
-      $left_menu               =     $('.js-left-menu'),
-      templateMovieleftSrc     =     $('#movie-left-template').html();
-      templateMovieLeft        =     Handlebars.compile(templateMovieleftSrc);
+      $leftMenu                =     $('.js-left-menu'),
+      $infoMovie               =     $('.js-movie-info'),
+      $main                    =     $('.main'), 
+      templateMovieleftSrc     =     $('#movie-left-template').html(),
+      templateMovieLeft        =     Handlebars.compile(templateMovieleftSrc),
+      templateMovieInfoSrc     =     $('#movie-info-template').html(),
+      templateMovieInfo        =     Handlebars.compile(templateMovieInfoSrc),
+      url_moreInfo             =     'http://api.themoviedb.org/3/movie/',
+      classFavoriteBtn         =     '.js-btn-add',
+      $favoriteButton,
+      similarsMovies,
+      movieTrailer;
  
   function getMoviesList(url) {
     return new Promise(function(resolve, reject) {
@@ -16,6 +25,13 @@ $(function(){
   getMoviesList().then(showAllMovies);
 
   function showAllMovies(data) {
+    getSimilarsMoviesAndTrialer(data.results[0].id).then(function(movieinfo) {
+      $main.css('background', 'url("http://image.tmdb.org/t/p/w1920'+data.results[0].backdrop_path+'") no-repeat');
+      data.results[0].similarsMovies = movieinfo.similarsMovies;
+      data.results[0].trailer = movieinfo. movieTrailer;
+      data.results[0].$infoMovieView = $(templateMovieInfo(data.results[0]));
+      $infoMovie.html(data.results[0].$infoMovieView);
+    });
     $.each(data.results, function(i, movie) {
       extendMovieObject(movie);
     });
@@ -23,29 +39,74 @@ $(function(){
   }
 
   function extendMovieObject(movie) {
-    movie.assignView = function() {
-      movie.$leftView = $(templateMovieLeft(movie));
+    movie.assignLeftMovieView = function() {
+      movie.$leftMovieView = $(templateMovieLeft(movie));
     };
     movie.assignFavorite = function() {
       movie.favorite = false;
     }
-    movie.clickMovie = function() {
-      movie.$leftView.click(function(){
-        alert($(this).find('.movie__title').html());
+    movie.assignSimilarsMoviesAndTrailer = function(data){
+      movie.similarsMovies = data.similarsMovies;
+      movie.trailer = data. movieTrailer;
+    }
+    movie.assignInfoMovieView = function() {
+      movie.$infoMovieView = $(templateMovieInfo(movie));
+    };
+    movie.events = function() {
+      movie.$leftMovieView.click(function(){
+        getSimilarsMoviesAndTrialer(movie.id).then(function(data) {
+          movie.assignSimilarsMoviesAndTrailer(data);
+          movie.assignInfoMovieView();
+          $favoriteButton = movie.$infoMovieView.find(classFavoriteBtn);
+          $favoriteButton.click(function(){
+            alert("hola");
+          });
+          showMovieInfo(movie);
+        });
       });
     }
 
-    movie.assignView();
+    movie.assignLeftMovieView();
     movie.assignFavorite();
-    movie.$leftView.appendTo($left_menu);
-    movie.clickMovie();
+    movie.$leftMovieView.appendTo($leftMenu);
+    movie.events();
   }
 
+  function getSimilarsMoviesAndTrialer(id) {
+    return $.get(url_moreInfo+id+'/videos?api_key='+api_key).then(function(dataTrailer) {
+      if(dataTrailer.results == 0) {
+        alert("No trailer found");
+      }else {
+        movieTrailer = dataTrailer.results[0]; 
+      }
+      return $.get(url_moreInfo+id+'/similar?api_key='+api_key);
+    }).then(function(dataSimilars) {
+      similarsMovies = dataSimilars;
+      return {
+        movieTrailer: movieTrailer.key,
+        similarsMovies: similarsMovies.results
+      }
+    });
+  }
+
+  function showMovieInfo(movie) {
+    $main.css('background', 'url("http://image.tmdb.org/t/p/w1920'+movie.backdrop_path+'") no-repeat');
+    $infoMovie.html(movie.$infoMovieView);
+  }
 }); 
 
-function getSimilarsAndTrailer(data) {
-  
-}
+
+
+
+
+
+
+
+
+
+
+
+
 
  
 

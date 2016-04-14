@@ -66,7 +66,7 @@
         <p class="movie-description__legend">{{overview}}</p>
         <div class="similar-movies">
           <h2 class="similar-movies__title">Similar Movies</h2>
-          {{#similars}}
+          {{#similarsMovies}}
             <div class="similar-movie margin-right--large">
               <img class="similar-movie__image margin-right" src="http://image.tmdb.org/t/p/w500{{poster_path}}" alt=""/>
               <div class="similar-movie__container">
@@ -74,7 +74,7 @@
                 <span class="similar-movie__info">{{release_date}}</span>
               </div>  
             </div>
-          {{/similars}}
+          {{/similarsMovies}}
         </div>
       </div>
     </div>  
