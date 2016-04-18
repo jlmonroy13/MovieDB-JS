@@ -33,7 +33,7 @@ $(function(){
     $categories.change(function(){
       hideAndShowElements(data);
     });
-    getSimilarsMoviesAndTrialer(data.results[0].id).then(function(movieinfo) {
+    getSimilarsMoviesAndTrailer(data.results[0].id).then(function(movieinfo) {
       $main.css('background', 'url("http://image.tmdb.org/t/p/w1920'+data.results[0].backdrop_path+'") no-repeat');
       data.results[0].similarsMovies = movieinfo.similarsMovies;
       data.results[0].trailer = movieinfo. movieTrailer;
@@ -67,7 +67,7 @@ $(function(){
     };
     movie.events = function() {
       movie.$leftMovieView.click(function(){
-        getSimilarsMoviesAndTrialer(movie.id).then(function(data) {
+        getSimilarsMoviesAndTrailer(movie.id).then(function(data) {
           movie.assignSimilarsMoviesAndTrailer(data);
           movie.assignInfoMovieView();
           $favoriteButton = movie.$infoMovieView.find(classFavoriteBtn);
@@ -85,7 +85,7 @@ $(function(){
     movie.events();
   }
 
-  function getSimilarsMoviesAndTrialer(id) {
+  function getSimilarsMoviesAndTrailer(id) {
     return $.get(url_moreInfo+id+'/videos?api_key='+api_key).then(function(dataTrailer) {
       if(dataTrailer.results == 0) {
         alert("No trailer found");
